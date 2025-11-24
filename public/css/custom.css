@@ -1,0 +1,96 @@
+.marquee {
+  display: flex;
+  width: 200%;
+  animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.central-image-container {
+  position: fixed; /* Make it fixed */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for its own size */
+  z-index: 999; /* Ensure it's above scrolling content but below header */
+  text-align: center;
+  padding: 0; /* Remove previous padding */
+  overflow: hidden; /* Hide overflow for marquee effect */
+  white-space: nowrap; /* Prevent wrapping */
+  width: 100%; /* Ensure it takes full width for animation */
+}
+
+.central-image-container img {
+  max-width: 68%; /* Make image 25% smaller */
+  width: auto; /* Let image determine its own width */
+  height: auto; /* Maintain aspect ratio */
+  display: inline-block; /* For horizontal alignment */
+  animation: central-marquee 60s linear infinite; /* Apply animation */
+}
+
+@keyframes central-marquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
+}
+
+.image-collage-container {
+  width: 100%;
+  padding: 20px; /* Keep horizontal padding */
+  padding-top: 100px; /* Add padding to create space below the fixed header */
+  box-sizing: border-box;
+}
+
+.image-collage {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important; /* 5 columns */
+  gap: 60px !important; /* Increased gap to prevent collision */
+  justify-items: center; /* Center items horizontally within their grid cells */
+  align-items: center; /* Vertically center items within their grid cells */
+  grid-auto-rows: 180px; /* Set a fixed height for each row */
+  padding: 20px; /* Add internal padding to the collage */
+}
+
+.image-collage img {
+  width: 100%;
+  height: auto; /* Allow height to adjust proportionally */
+  object-fit: contain; /* Maintain aspect ratio without cropping */
+  border-radius: 5px;
+  box-sizing: border-box; /* Ensure consistent sizing */
+}
+
+body {
+  padding-top: 100px; /* Keep padding for fixed header */
+  background-color: black !important; /* Set background to black */
+}
+
+header a {
+  color: white;
+}
+
+main {
+  background-color: transparent;
+}
+
+.social-icons-footer {
+  position: fixed;
+  bottom: 0; /* Move to bottom */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust for its own width */
+  background-color: transparent !important; /* Transparent background */
+  padding: 10px 0;
+  text-align: center;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.social-icons-footer a {
+  color: white; /* White icons */
+  font-size: 24px; /* Adjust icon size as needed */
+  margin: 0 15px; /* Spacing between icons */
+  text-decoration: none;
+}
+
+.social-icons-footer a:hover {
+  opacity: 0.7; /* Subtle hover effect */
+}
