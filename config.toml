@@ -1,6 +1,13 @@
 baseURL = 'https://example.org/'
-languageCode = 'en-us'
 title = "HEAVEN'S GATE"
+
+# Replace the single languageCode line with this block:
+defaultContentLanguage = 'en'
+[languages]
+  [languages.en]
+    languageCode = 'en-us'
+    contentDir = 'content'
+    weight = 1
 
 [params]
   googleFonts = "https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100..900&display=swap"
