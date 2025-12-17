@@ -12,22 +12,14 @@
 
     {{ hugo.Generator }}
 
-    {{ $production := .Site.IsProduction }}
+    {{ $production := eq hugo.Environment "production" }}
     {{ $public := not .Params.private }}
+
     {{ if and $production $public }}
       <meta name="robots" content="index, follow">
     {{ else }}
       <meta name="robots" content="noindex, nofollow">
     {{ end }}
-
-    {{/* Modern Author logic */}}
-    {{- $author := .Params.author | default .Site.Params.author -}}
-    {{- if $author -}}
-      {{- if reflect.IsSlice $author -}}
-        {{- $author = delimit $author ", " | plainify -}}
-      {{- end -}}
-      <meta name="author" content="{{ $author }}">
-    {{- end -}}
 
     <link rel="stylesheet" href="/css/main.css">
     {{ if not .Params.hide_background_script }}
