@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}">
+<html lang="{{ .Site.Language.LanguageCode | default .Site.Language.Lang }}">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
     {{ hugo.Generator }}
+    
     {{ $production := hugo.IsProduction }}
     {{ $public := not .Params.private }}
     {{ if and $production $public }}
@@ -15,37 +16,39 @@
     {{ else }}
       <meta name="robots" content="noindex, nofollow">
     {{ end }}
-    {{ with .Params.author | compare.Default .Site.Params.author }}
-      {{- $author := . -}}
-      {{- if reflect.IsSlice . -}}
-        {{- $author = collections.Delimit . ", " | transform.Plainify -}}
+
+    {{/* Modern Author logic */}}
+    {{- $author := .Params.author | default .Site.Params.author -}}
+    {{- if $author -}}
+      {{- if reflect.IsSlice $author -}}
+        {{- $author = delimit $author ", " | plainify -}}
       {{- end -}}
       <meta name="author" content="{{ $author }}">
-    {{ end }}
+    {{- end -}}
 
-    
     <link rel="stylesheet" href="/css/main.css">
-  {{ if not .Params.hide_background_script }}
-  <script src="/js/random-background.js"></script>
-{{ end }}
+    {{ if not .Params.hide_background_script }}
+      <script src="/js/random-background.js"></script>
+    {{ end }}
     <script src="/js/popup.js"></script>
   </head>
 
-  {{- $environment := hugo.Environment | compare.Default "production" -}}
-  <body class="ma0 {{ $.Param "body_classes"  | compare.Default "avenir"}} {{ $environment }} {{ if .Params.is_blank }}is-blank{{ end }}">
+  {{- $environment := hugo.Environment | default "production" -}}
+  <body class="ma0 {{ $.Param "body_classes" | default "avenir" }} {{ $environment }} {{ if .Params.is_blank }}is-blank{{ end }}">
     {{ if not .Params.hide_background_grid }}
-      {{ partials.Include "background-grid.html" . }}
+      {{ partial "background-grid.html" . }}
     {{ end }}
     
+    {{ block "header" . }}{{ partial "site-header.html" . }}{{ end }}
     
-
-    {{ block "header" . }}{{ partials.Include "site-header.html" .}}{{ end }}
     <main class="pb7" role="main">
       {{ block "main" . }}{{ end }}
     </main>
-    {{ block "footer" . }}{{ partials.IncludeCached "site-footer.html" . }}{{ end }}
-    {{ partials.Include "popup.html" . }}
-    {{ partials.Include "schedule-popup.html" . }}
-    {{ partials.Include "member-details-popup.html" . }}
+    
+    {{ block "footer" . }}{{ partialCached "site-footer.html" . }}{{ end }}
+    
+    {{ partial "popup.html" . }}
+    {{ partial "schedule-popup.html" . }}
+    {{ partial "member-details-popup.html" . }}
   </body>
 </html>
