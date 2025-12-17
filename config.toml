@@ -1,7 +1,6 @@
 baseURL = 'https://example.org/'
 title = "HEAVEN'S GATE"
 
-# Replace the single languageCode line with this block:
 defaultContentLanguage = 'en'
 [languages]
   [languages.en]
