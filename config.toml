@@ -2,6 +2,7 @@ baseURL = 'https://example.org/'
 title = "HEAVEN'S GATE"
 
 defaultContentLanguage = 'en'
+
 [languages]
   [languages.en]
     languageCode = 'en-us'

@@ -1,0 +1,17 @@
+# Hugo
+/public/
+/resources/_gen/
+/data/
+/archetypes/
+/content/
+/layouts/
+/static/
+/themes/
+/config.toml
+/hugo_build.lock
+
+# macOS
+.DS_Store
+
+# Vercel
+.vercel/
