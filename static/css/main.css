@@ -34,7 +34,7 @@ html, body {
   height: auto; /* Maintain aspect ratio */
   display: inline-block; /* For horizontal alignment */
   margin-right: -150px; /* Further decrease spacing */
-  animation: central-marquee 60s linear infinite; /* Apply animation */
+  animation: central-marquee 30s linear infinite; /* Apply animation */
   will-change: transform;
 }
 
@@ -359,4 +359,59 @@ main {
 
 .playlist {
   text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .image-collage {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .playlist-item {
+    width: 100%;
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .central-image-container img {
+    max-width: 80%;
+  }
+
+  .popup-content {
+    width: 90%;
+  }
+
+  .background-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .image-boxes-container {
+    grid-template-columns: 1fr;
+  }
+
+  .social-icons {
+    gap: 10px;
+  }
+
+  .social-icons-footer a {
+    font-size: 20px;
+    margin: 0 10px;
+  }
+
+  .popup-overlay.right-slide .popup-content {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-collage {
+    grid-template-columns: 1fr !important;
+  }
 }
