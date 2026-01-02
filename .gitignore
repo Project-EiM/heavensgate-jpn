@@ -5,7 +5,7 @@
 /archetypes/
 /content/
 
-/static/
+
 /themes/
 /config.toml
 /hugo_build.lock
