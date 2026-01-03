@@ -16,3 +16,4 @@
 # Vercel
 .vercel/.DS_Store
 static/js/random-background.js
+public/
