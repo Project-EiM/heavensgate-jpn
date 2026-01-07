@@ -21,7 +21,6 @@ defaultContentLanguage = 'en'
   fontSize = "16px"
   logo = "images/logo.png"
   favicon = "images/favicon.ico"
-  backgroundImage = "images/background.jpg"
   backgroundPosition = "center"
   backgroundSize = "cover"
   backgroundRepeat = "no-repeat"
