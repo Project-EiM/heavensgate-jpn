@@ -1,0 +1,117 @@
+baseURL = 'https://example.org/'
+title = "HEAVEN'S GATE"
+
+defaultContentLanguage = 'en'
+
+[languages]
+  [languages.en]
+    languageCode = 'en-us'
+    contentDir = 'content'
+    weight = 1
+
+[params]
+  googleFonts = "https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100..900&display=swap"
+  localFonts = "path/to/your/local/font.woff2" # Not yet implemented
+  mainColor = "#F9F9F9"
+  secondaryColor = "#000000"
+  accentColor = "#FF0000"
+  backgroundColor = "#F9F9F9"
+  headerFont = "Encode Sans"
+  bodyFont = "Encode Sans"
+  fontSize = "16px"
+  logo = "images/logo.png"
+  favicon = "images/favicon.ico"
+  backgroundPosition = "center"
+  backgroundSize = "cover"
+  backgroundRepeat = "no-repeat"
+  opacity = 1.0
+  headerHeight = "100px"
+  footerHeight = "50px"
+  socialIconSize = "30px"
+  socialIconColor = "#000000"
+  socialIconHoverColor = "#FF0000"
+  socialLinks = [
+    { name = "Spotify", url = "https" },
+    { name = "Apple Music", url = "https" },
+    { name = "Tidal", url = "https" },
+    { name = "SoundCloud", url = "https" },
+    { name = "Bandcamp", url = "https" },
+    { name = "Instagram", url = "https" },
+    { name = "TikTok", url = "https" },
+    { name = "X", url = "https" },
+    { name = "Facebook", url = "https" },
+    { name = "YouTube", url = "https" },
+    { name = "Discord", url = "https" },
+    { name = "Resso", url = "https" },
+    { name = "Beatport", url = "https" },
+    { name = "Amazon Music", url = "https" },
+    { name = "Deezer", url = "https" },
+    { name = "Pandora", url = "https" },
+    { name = "Shazam", url = "https" },
+    { name = "Boomplay", url = "https" },
+    { name = "Audiomack", url = "https" },
+    { name = "JioSaavn", url = "https" },
+    { name = "Gaana", url = "https" },
+    { name = "Wynk Music", url = "https" },
+    { name = "Hungama", url = "https" },
+    { name = "Rhapsody", url = "https" },
+    { name = "Napster", url = "https" },
+    { name = "Yandex Music", url = "https" },
+    { name = "Anghami", url = "https" },
+    { name = "KKBox", url = "https" },
+    { name = "Line Music", url = "https" },
+    { name = "NetEase Cloud Music", url = "https" },
+    { name = "QQ Music", url = "https" },
+    { name = "Tencent Music", url = "https" },
+    { name = "Vibe", url = "https" },
+    { name = "Melon", url = "https" },
+    { name = "Flo", url = "https" },
+    { name = "Genie", url = "https" },
+    { name = "Bugs!", url = "https" },
+    { name = "Naver Music", url = "https" },
+    { name = "Soribada", url = "https" },
+    { name = "Monkey3", url = "https" },
+    { name = "Mnet", url = "https" },
+    { name = "Olleh Music", url = "https" },
+    { name = "Cyworld Music", url = "https" },
+    { name = "Daum Music", url = "https" },
+    { name = "Zune", url = "https://" },
+    { name = "Groove Music", url = "https" },
+    { name = "iHeartRadio", url = "https" },
+    { name = "Slacker Radio", url = "https" },
+    { name = "AccuRadio", url = "https" },
+    { name = "LiveXLive", url = "https" },
+    { name = "8tracks", url = "https" },
+    { name = "Mixcloud", url = "https" },
+    { name = "Playzer", url = "https" },
+    { name = "Qobuz", url = "https" },
+    { name = "7digital", url = "https" },
+    { name = "HDtracks", url = "https" },
+    { name = "Mora", url = "https" },
+    { name = "e-onkyo music", url = "https" },
+    { name = "RecoChoku", url = "https" },
+    { name = "GIGA MUSIC", url = "https" },
+    { name = "music.jp", url = "https" },
+    { name = "Oricon Music Store", url = "https" },
+    { name = "AWA", url = "https" },
+    { name = "Rakuten Music", url = "https" },
+    { name = "dヒッツ", url = "https" },
+    { name = "うたパス", url = "https" },
+    { name = "mysound", url = "https" },
+    { name = "animelo mix", url = "https" },
+    { name = "mora qualitas", url = "https" },
+    { name = "RecMusic", url = "https" },
+    { name = "OTOTOY", url = "https" },
+    { name = "HIGHRESAUDIO", url = "https" },
+    { name = "Primephonic", url = "https" },
+    { name = "IDAGIO", url = "https" },
+    { name = "Classical Archives", url = "https" },
+    { name = "Presto Classical", url = "https" },
+    { name = "eClassical", url = "https" },
+    { name = "ClassicsOnline", url = "https" },
+    { name = "Naxos Music Library", url = "https" },
+    { name = "ArkivMusic", url = "https" },
+    { name = "Chandos", url = "https" },
+    { name = "Hyperion Records", url = "https" },
+    { name = "BIS Records", url = "https" },
+  ]
