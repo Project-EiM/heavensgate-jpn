@@ -1,0 +1,18 @@
+{{ define "main" }}
+<div class="image-boxes-container">
+  {{ range .Site.Data.artists }}
+  <div class="image-box" data-member-id="{{ .id }}">
+    <div class="image-wrapper">
+      <img src="{{ .image1 }}" alt="{{ .name }}">
+    </div>
+    <div class="image-wrapper">
+      <img src="{{ .image2 }}" alt="{{ .name }} Alt">
+    </div>
+  </div>
+  {{ end }}
+</div>
+
+<script id="member-data" type="application/json">
+  {{ .Site.Data.artists | jsonify }}
+</script>
+{{ end }}

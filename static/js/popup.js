@@ -42,10 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
             event.preventDefault(); // Prevent default anchor behavior
             schedulePopupOverlay.style.display = 'flex';
             schedulePopupOverlay.classList.add('active'); // Show the popup
-            // Add a class to trigger the slide-in animation
-            setTimeout(() => {
-                schedulePopupOverlay.querySelector('.popup-content').style.transform = 'translateX(0%)';
-            }, 500);
         });
     }
 
@@ -60,9 +56,22 @@ document.addEventListener('DOMContentLoaded', function() {
     function fetchMemberData(memberId) {
         const memberDataScript = document.getElementById('member-data');
         if (memberDataScript) {
-            const allMembersData = JSON.parse(JSON.parse(memberDataScript.textContent)); // Parse twice
-            return allMembersData.find(member => member.id === memberId);
+            console.log("Member data script content:", memberDataScript.textContent);
+            try {
+                const allMembersData = JSON.parse(JSON.parse(memberDataScript.textContent));
+                console.log("Parsed member data:", allMembersData);
+                if (Array.isArray(allMembersData)) {
+                    return allMembersData.find(member => member.id === memberId);
+                } else {
+                    console.error("Parsed member data is not an array.");
+                    return null;
+                }
+            } catch (e) {
+                console.error("Error parsing member data:", e);
+                return null;
+            }
         }
+        console.error("Could not find member-data script tag.");
         return null;
     }
 
@@ -71,7 +80,10 @@ document.addEventListener('DOMContentLoaded', function() {
         memberImageBoxes.forEach(box => {
             box.addEventListener('click', async function() {
                 const memberId = this.dataset.memberId; // Get member ID from data attribute
+                console.log("Clicked on member box with id:", memberId);
                 const memberData = await fetchMemberData(memberId); // Fetch member data
+                console.log("Fetched member data:", memberData);
+
 
                 if (memberData) {
                     memberPopupName.textContent = memberData.name;
@@ -80,6 +92,50 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     memberDetailsPopupOverlay.style.display = 'flex';
                     memberDetailsPopupOverlay.classList.add('active');
+                    console.log("Showing member details popup for member:", memberId);
+                } else {
+                    console.error("Could not find member data for id:", memberId);
+                }
+            });
+        });
+    }
+
+    // New section for Past Events Popups
+    const pastEventBoxes = document.querySelectorAll('.past-event-box');
+    const pastEventPopupOverlay = document.getElementById('past-event-popup');
+    const pastEventPopupContent = document.getElementById('past-event-popup-content');
+
+    // Function to fetch past event data from embedded JSON
+    function fetchPastEventData(eventId) {
+        const pastEventDataScript = document.getElementById('past-event-data');
+        if (pastEventDataScript) {
+            try {
+                const allPastEventsData = JSON.parse(JSON.parse(pastEventDataScript.textContent));
+                if (Array.isArray(allPastEventsData)) {
+                    return allPastEventsData.find(event => event.id === eventId);
+                }
+            } catch (e) {
+                console.error("Error parsing past event data:", e);
+            }
+        }
+        return null;
+    }
+
+    if (pastEventBoxes.length > 0 && pastEventPopupOverlay) {
+        pastEventBoxes.forEach(box => {
+            box.addEventListener('click', async function() {
+                const eventId = this.dataset.eventId;
+                const eventData = await fetchPastEventData(eventId);
+
+                if (eventData) {
+                    pastEventPopupContent.innerHTML = `
+                        <h2>${eventData.title}</h2>
+                        <p class="en">${eventData.event_description_en}</p>
+                        <p class="jp">${eventData.event_description_jp}</p>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=${eventData.youtube_playlist_id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    `;
+                    pastEventPopupOverlay.style.display = 'flex';
+                    pastEventPopupOverlay.classList.add('active');
                 }
             });
         });

@@ -109,7 +109,7 @@ main {
   left: 0;
   top: 0;
   width: 100%; /* Full width */
-  height: 100%; /* Full height */
+  height: 100%;
   overflow: auto; /* Enable scroll if needed */
   background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
 }
@@ -220,7 +220,7 @@ main {
   left: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0); /* Transparent background */
-  z-index: 10;
+  z-index: 1001;
   padding: 20px 0;
   text-align: center;
 }
@@ -279,7 +279,7 @@ main {
 
 .black-background main {
   position: relative;
-  z-index: 1000;
+  z-index: 999;
 }
 
 .image-boxes-container {
@@ -289,6 +289,7 @@ main {
   padding: 20px;
   max-width: 1200px;
   margin: auto;
+  justify-content: center;
 }
 
 .image-box {
@@ -361,13 +362,15 @@ main {
 }
 
 
-#introduction-popup .popup-content .en {
+#introduction-popup .popup-content .en,
+#past-event-popup .popup-content .en {
   word-spacing: 3px; /* Adjust as needed */
   line-height: 20px; /* Adjust as needed */
   margin-bottom: 30px; /* Adjust as needed */
 }
 
-#introduction-popup .popup-content .jp {
+#introduction-popup .popup-content .jp,
+#past-event-popup .popup-content .jp {
   word-spacing: 8px; /* Adjust as needed */
   line-height: 20px; /* Adjust as needed */
   margin-bottom: 30px; /* Adjust as needed */

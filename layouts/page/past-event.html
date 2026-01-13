@@ -1,60 +1,15 @@
 {{ define "main" }}
-<div class="youtube-playlists-container">
-  <div class="playlist-item">
-    <div class="playlist-title">
-      <h2>HEAVEN'S GATE Vol.2</h2>
-    </div>
-    <div class="playlist">
-      <iframe width="360" height="202" src="https://www.youtube.com/embed/videoseries?list=PLICFurj-cPk3X68X7ZQ7UU-nBCcNFy-m6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="image-boxes-container">
+  {{ range .Site.Data.past_events }}
+  <div class="image-box past-event-box" data-event-id="{{ .id }}">
+    <div class="image-wrapper">
+      <img src="{{ .image }}" alt="{{ .title }}">
     </div>
   </div>
-  <div class="playlist-item">
-    <div class="playlist-title">
-      <h2>HEAVEN'S GATE Vol.4</h2>
-    </div>
-    <div class="playlist">
-      <iframe width="360" height="202" src="https://www.youtube.com/embed/videoseries?list=PLICFurj-cPk0h0TBWlRJWuVPT4eHnek5s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </div>
-  <div class="playlist-item">
-    <div class="playlist-title">
-      <h2>HEAVEN'S GATE Vol.5</h2>
-    </div>
-    <div class="playlist">
-      <iframe width="360" height="202" src="https://www.youtube.com/embed/videoseries?list=PLICFurj-cPk3q8GSCh9r7E6q-IXhfB7hM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </div>
-  <div class="playlist-item">
-    <div class="playlist-title">
-      <h2>HEAVEN'S GATE x Hyper Hybrid</h2>
-    </div>
-    <div class="playlist">
-      <iframe width="360" height="202" src="https://www.youtube.com/embed/videoseries?list=PLICFurj-cPk2bM0600LY4jnpvx1udY105" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </div>
-  <div class="playlist-item">
-    <div class="playlist-title">
-      <h2>delcare EP Release Party</h2>
-    </div>
-    <div class="playlist">
-      <iframe width="360" height="202" src="https://www.youtube.com/embed/videoseries?list=PLICFurj-cPk1LO5GYqJm1m4YosbyuSalm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </div>
-  <div class="playlist-item">
-    <div class="playlist-title">
-      <h2>HEAVEN'S GATE Vol.6</h2>
-    </div>
-    <div class="playlist">
-      <iframe width="360" height="202" src="https://www.youtube.com/embed/videoseries?list=PLICFurj-cPk09AKafxiPKO5WljA7GKAqF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </div>
-  <div class="playlist-item">
-    <div class="playlist-title">
-      <h2>HEAVEN'S GATE Syncup Vol.4</h2>
-    </div>
-    <div class="playlist">
-      <iframe width="360" height="202" src="https://www.youtube.com/embed/videoseries?list=PLICFurj-cPk2GN3Iji8PX5VPnSbFx1kWH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-  </div>
+  {{ end }}
 </div>
+
+<script id="past-event-data" type="application/json">
+  {{ .Site.Data.past_events | jsonify }}
+</script>
 {{ end }}
