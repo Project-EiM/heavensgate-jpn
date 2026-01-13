@@ -1,1 +1,9 @@
+# macOS
 .DS_Store
+
+# Hugo build output (NEVER commit)
+public/
+resources/
+
+# Optional safety
+themes/.DS_Store
